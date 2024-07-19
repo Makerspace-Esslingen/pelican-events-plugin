@@ -221,6 +221,9 @@ def generate_ical_file(generator):
     DEFAULT_LANG = generator.settings['DEFAULT_LANG']
     curr_events = events if not localized_events else localized_events[DEFAULT_LANG]
 
+    filtered_list = list(filter(lambda x: x.event_plugin_data["dtstart"] >= datetime.now(), curr_events))
+    curr_events = filtered_list
+
     for e in curr_events:
         icalendar_event = icalendar.Event(
             summary=strip_html_tags(e.metadata[metadata_field_for_event_summary]),
