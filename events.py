@@ -25,7 +25,6 @@ import logging
 import os.path
 import pytz
 import re
-import croniter
 
 log = logging.getLogger(__name__)
 
