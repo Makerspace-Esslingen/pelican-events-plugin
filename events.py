@@ -219,6 +219,7 @@ def generate_ical_file(generator):
 
         ical.add_component(icalendar_event)
 
+    os.makedirs(os.path.dirname(ics_fname), exist_ok=True)
     with open(ics_fname, 'wb') as f:
         f.write(ical.to_ical())
 
